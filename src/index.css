@@ -4,7 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
-// Tiempos font variants as separate families
+/* Tiempos font variants as separate families */
 @font-face {
   font-family: 'Tiempos';
   src: url('./assets/fonts/TiemposText-Regular.woff') format('woff');
