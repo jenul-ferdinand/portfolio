@@ -1,30 +1,44 @@
+import WorkExperience from './components/WorkExperience'
+import { useWorkExperience } from './hooks/useWorkExperience'
+
+const name = 'Jenul Ferdinand'
+const currentPosition = 'Computer Science Student at Monash University'
+
+const aboutMe = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`
+
 function App() {
+  const { workExperiences, loading } = useWorkExperience()
+
   return (
-    <div className="gradient-bg flex min-h-screen items-center justify-center from-blue-500 to-purple-600 p-8">
-      <div className="max-w-xl transform rounded-lg bg-white p-8 shadow-lg transition duration-500 hover:scale-105">
-        <h1 className="mb-4 animate-bounce text-center text-4xl font-bold text-gray-800">
-          Hello World
-        </h1>
-        <p className="mb-6 rounded-md bg-amber-100 p-6 text-gray-600">
-          Welcome to our React application enhanced with Tailwind CSS. This
-          application is built using the modern web development stack: Vite,
-          React, Tailwind CSS, and Prettier.
-        </p>
-        <div className="prose mt-6">
-          <p>
-            Tailwind CSS is a utility-first CSS framework that provides
-            low-level utility classes to build custom designs without any
-            annoying opinionated styles you have to fight to override. Paired
-            with React, it makes building beautiful and interactive user
-            interfaces a breeze.
-          </p>
-          <p>
-            Explore the power of combining these technologies to create
-            stunning, responsive, and animated web applications. Enjoy the
-            seamless development experience with Prettier ensuring your code
-            stays clean and consistent.
-          </p>
-        </div>
+    <div className="min-h-screen bg-amber-50 px-8 py-12">
+      {/* Name and title */}
+      <div className="max-w-4xl">
+        <h1 className="text-4xl font-tiempos text-gray-900 mb-2">{name}</h1>
+        <h2 className="text-xl font-tiempos italic text-gray-600 mb-8">{currentPosition}</h2>
+      </div>
+
+      {/* About me */}
+      <p className="font-poppins">{aboutMe}</p>
+
+      {/* Work experience */}
+      <div className="mt-12">
+        <h2 className="text-2xl font-tiempos mb-6">Work Experience</h2>
+        {loading ? (
+          <p className="font-poppins text-gray-500">Loading work experience...</p>
+        ) : (
+          workExperiences.map((experience, index) => (
+            <WorkExperience
+              key={index}
+              companyImage={experience.companyImage}
+              role={experience.role}
+              companyName={experience.companyName}
+              location={experience.location}
+              startDate={experience.startDate}
+              endDate={experience.endDate}
+              description={experience.description}
+            />
+          ))
+        )}
       </div>
     </div>
   );
