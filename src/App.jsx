@@ -2,15 +2,18 @@ import { useMemo } from 'react';
 
 import WorkExperience from './components/WorkExperience';
 import LoadingOverlay from './components/LoadingOverlay';
+
 import { useWorkExperience } from './hooks/useWorkExperience';
+import { useVolunteering } from './hooks/useVolunteering';
 
 const name = 'Jenul Ferdinand';
-const currentPosition = 'Computer Science Student at Monash University';
+const currentPosition = 'Bachelor of Computer Science (Advanced) at Monash University';
 
 const aboutMe = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`;
 
 function App() {
   const { workExperiences, loading: loadingWorkExperiences, error: errorWorkExperiences } = useWorkExperience()
+  const { volunteerings, loading: loadingVolunteerings, error: errorVolunteerings } = useVolunteering()
 
   const getWorkExperiences = useMemo(() => {
     if (errorWorkExperiences) 
@@ -25,6 +28,19 @@ function App() {
     );
   }, [workExperiences, loadingWorkExperiences, errorWorkExperiences]);
 
+  const getVolunteerings = useMemo(() => {
+    if (errorVolunteerings)
+      return <p className="font-poppins text-gray-500">Error fetching volunteering experience from resume...</p>;
+    if (loadingVolunteerings)
+      return <p className="font-poppins text-gray-500">Loading volunteering experience...</p>;
+
+    return (
+      volunteerings.map((experience, index) => {
+        return <WorkExperience key={index} {...experience} />
+      })
+    );
+  }, [volunteerings, loadingVolunteerings, errorVolunteerings])
+
   return (
     <>
       <LoadingOverlay />
@@ -32,7 +48,7 @@ function App() {
         {/* Name and title */}
         <div className="max-w-4xl">
           <h1 className="text-4xl font-tiempos text-gray-900 mb-2">{name}</h1>
-          <h2 className="text-xl font-tiempos italic text-gray-600 mb-8">{currentPosition}</h2>
+          <h2 className="text-xl font-tiempos text-gray-700 mb-8">{currentPosition}</h2>
         </div>
 
         {/* About me */}
@@ -42,6 +58,12 @@ function App() {
         <div className="mt-12">
           <h2 className="text-2xl font-tiempos mb-6">Work Experience</h2>
           {getWorkExperiences}
+        </div>
+
+        {/* Volunteering */}
+        <div className="mt-12">
+          <h2 className="text-2xl font-tiempos mb-6">Volunteering</h2>
+          {getVolunteerings}
         </div>
       </div>
     </>
