@@ -11,7 +11,6 @@ export function useWorkExperience() {
     const fetchWorkExperience = async () => {
       try {
         const response = await fetch(GITHUB_RAW_URL)
-        
         if (!response.ok) {
           throw new Error(`Failed to fetch: ${response.status}`)
         }

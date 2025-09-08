@@ -20,9 +20,9 @@ function WorkExperience({
         />
       </div>
 
-      {/* Work Details */}
+      {/* Details */}
       <div className="flex-1">
-        <h3 className="font-tiempos text-lg font-bold text-gray-900">{role}</h3>
+        <h3 className="font-tiempos text-lg text-gray-900">{role}</h3>
         <p className="font-poppins text-base text-gray-700 mb-1">{companyName}</p>
         <p className="font-poppins text-sm text-gray-500 mb-2">
           {location} • {startDate} - {endDate}
