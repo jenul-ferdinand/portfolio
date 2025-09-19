@@ -6,6 +6,8 @@ import LoadingOverlay from './components/LoadingOverlay';
 import { useWorkExperience } from './hooks/useWorkExperience';
 import { useVolunteering } from './hooks/useVolunteering';
 
+import avatarImage from './assets/images/avatar.jpg';
+
 const name = 'Jenul Ferdinand';
 const currentPosition = 'Bachelor of Computer Science (Advanced) at Monash University';
 
@@ -44,25 +46,37 @@ function App() {
   return (
     <>
       <LoadingOverlay />
-      <div className="min-h-screen bg-amber-50 px-8 py-12">
-        {/* Name and title */}
-        <div className="max-w-4xl">
-          <h1 className="text-4xl font-tiempos text-gray-900 mb-2">{name}</h1>
-          <h2 className="text-xl font-tiempos text-gray-700 mb-8">{currentPosition}</h2>
+      <div className="min-h-screen bg-neutral-950 px-8 py-12">
+        {/* Header section with text on left, avatar on right */}
+        <div className="relative w-full">
+          {/* Left column - Text content */}
+          <div className="md:max-w-7xl sm:max-w-3xl md:pr-52 sm:pr-0">
+            <h1 className="text-4xl font-tiempos text-white mb-2">{name}</h1>
+            <h2 className="text-xl font-tiempos text-gray-300 mb-8">{currentPosition}</h2>
+            
+            {/* About me */}
+            <p className="font-poppins text-gray-400">{aboutMe}</p>
+          </div>
+          
+          {/* Right column - Avatar positioned to far right */}
+          <div className="absolute right-0 top-0 hidden md:block">
+            <img 
+              src={avatarImage} 
+              alt="Jenul Ferdinand"
+              className="w-40 h-40 rounded-full object-cover border-2 border-gray-200"
+            />
+          </div>
         </div>
 
-        {/* About me */}
-        <p className="font-poppins">{aboutMe}</p>
-
         {/* Work experience */}
-        <div className="mt-12">
-          <h2 className="text-2xl font-tiempos mb-6">Work Experience</h2>
+        <div className="mt-12 max-w-4xl">
+          <h2 className="text-2xl font-tiempos text-gray-100 mb-6">Work Experience</h2>
           {getWorkExperiences}
         </div>
 
         {/* Volunteering */}
-        <div className="mt-12">
-          <h2 className="text-2xl font-tiempos mb-6">Volunteering</h2>
+        <div className="mt-12 max-w-4xl">
+          <h2 className="text-2xl font-tiempos text-gray-100 mb-6">Volunteering</h2>
           {getVolunteerings}
         </div>
       </div>
