@@ -1,3 +1,6 @@
+# Playwright screenshots
+.playwright-mcp/
+
 ### Node template
 # Logs
 logs
