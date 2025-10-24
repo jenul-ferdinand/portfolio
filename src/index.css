@@ -4,6 +4,11 @@
 @tailwind components;
 @tailwind utilities;
 
+::selection {
+  background-color: #d6c73c;
+  color: white;
+}
+
 /* Tiempos font variants as separate families */
 @font-face {
   font-family: 'Tiempos';
