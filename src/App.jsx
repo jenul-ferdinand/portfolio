@@ -100,7 +100,7 @@ function App() {
 
               {/* Work experience */}
               <div className="mt-12 max-w-4xl">
-                <h2 className="mb-6 font-tiempos text-2xl text-gray-100">
+                <h2 className="mb-6 font-tiempos text-3xl text-gray-100">
                   Work Experience
                 </h2>
                 {getWorkExperiences}
@@ -108,7 +108,7 @@ function App() {
 
               {/* Volunteering */}
               <div className="mt-12 max-w-4xl">
-                <h2 className="mb-6 font-tiempos text-2xl text-gray-100">
+                <h2 className="mb-6 font-tiempos text-3xl text-gray-100">
                   Volunteering
                 </h2>
                 {getVolunteerings}

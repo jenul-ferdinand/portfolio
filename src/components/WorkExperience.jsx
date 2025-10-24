@@ -34,7 +34,7 @@ function WorkExperience({
   return (
     <div className="group relative mb-8 max-w-4xl rounded-2xl p-[2px]">
       <div
-        className="absolute inset-0 rounded-2xl opacity-30 transition-opacity duration-300 group-hover:opacity-100"
+        className="absolute inset-0 rounded-2xl opacity-15 transition-opacity duration-300 group-hover:opacity-50"
         style={{
           background: gradient || "transparent",
         }}
