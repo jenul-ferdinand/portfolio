@@ -10,7 +10,8 @@ function WorkExperience({
   description,
 }) {
   return (
-    <div className="mb-8 max-w-4xl">
+    <div className="mb-8 max-w-4xl bg-neutral-800 rounded-2xl p-4 drop-shadow-2xl "> 
+      {/* Header section with image and basic info */}
       <div className="flex gap-4">
         {/* Company Image */}
         <div className="flex-shrink-0">
@@ -23,30 +24,32 @@ function WorkExperience({
 
         {/* Details */}
         <div className="flex-1 pr-0 md:pr-8">
-          <h3 className="font-tiempos text-lg text-white">{role}</h3>
+          <h3 className="font-poppins text-lg text-white">{role}</h3>
           <p className="mb-1 font-poppins text-base text-gray-200">
             {companyName}
           </p>
           <p className="mb-2 font-poppins text-sm text-gray-400">
             {location} • {startDate} - {endDate}
           </p>
-          <ul className="flex-1 space-y-1 font-poppins text-sm leading-relaxed text-gray-300 md:text-base">
-            {Array.isArray(description) ? (
-              description.map((item, index) => (
-                <li key={index} className="flex items-start">
-                  <span className="mr-2 text-gray-300">•</span>
-                  <span>{item}</span>
-                </li>
-              ))
-            ) : (
-              <li className="flex items-start">
-                <span className="mr-2 text-gray-600">•</span>
-                <span>{description}</span>
-              </li>
-            )}
-          </ul>
         </div>
       </div>
+
+      {/* Bullet points - full width, aligned with left edge */}
+      <ul className="mt-2 space-y-1 font-poppins text-sm leading-relaxed text-gray-200 md:text-base">
+        {Array.isArray(description) ? (
+          description.map((item, index) => (
+            <li key={index} className="flex items-start">
+              <span className="mr-2 text-gray-300">•</span>
+              <span>{item}</span>
+            </li>
+          ))
+        ) : (
+          <li className="flex items-start">
+            <span className="mr-2 text-gray-600">•</span>
+            <span>{description}</span>
+          </li>
+        )}
+      </ul>
     </div>
   );
 }
