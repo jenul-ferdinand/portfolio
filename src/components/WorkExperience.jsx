@@ -57,15 +57,15 @@ function WorkExperience({
           {/* Details */}
           <div className="flex-1 pr-0 md:pr-8">
             {/* Role */}
-            <h3 className="select-none font-poppins text-lg text-white">
+            <h3 className="select-none font-poppins text-sm sm:text-base md:text-lg text-white">
               {role}
             </h3>
             {/* Company name */}
-            <p className="mb-1 select-none font-poppins text-base text-gray-200">
+            <p className="mb-1 select-none font-poppins text-xs sm:text-sm md:text-base text-gray-200">
               {companyName}
             </p>
             {/* Location and dates */}
-            <p className="select-none font-poppins text-sm text-gray-400">
+            <p className="select-none font-poppins text-xs sm:text-sm text-gray-400">
               {location} • {startDate} - {endDate}
             </p>
           </div>
