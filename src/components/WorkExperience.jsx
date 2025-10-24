@@ -13,6 +13,8 @@ function WorkExperience({
 }) {
   // Gradients and colours
   const [gradient, setGradient] = useState("");
+  const [isExpanded, setIsExpanded] = useState(false);
+
   useEffect(() => {
     const loadColors = async () => {
       try {
@@ -38,10 +40,13 @@ function WorkExperience({
         }}
       />
       <div className="relative rounded-2xl bg-neutral-800 p-4 drop-shadow-2xl">
-        {/* Header section with image and basic info */}
-        <div className="flex gap-4">
+        {/* Header section with image and basic info - clickable */}
+        <div
+          className="flex cursor-pointer gap-4"
+          onClick={() => setIsExpanded(!isExpanded)}
+        >
           {/* Company Image */}
-          <div className="flex-shrink-0">
+          <div className="flex-shrink-0 select-none">
             <img
               src={companyImage}
               alt={`${companyName} logo`}
@@ -51,32 +56,58 @@ function WorkExperience({
 
           {/* Details */}
           <div className="flex-1 pr-0 md:pr-8">
-            <h3 className="font-poppins text-lg text-white">{role}</h3>
-            <p className="mb-1 font-poppins text-base text-gray-200">
+            {/* Role */}
+            <h3 className="select-none font-poppins text-lg text-white">
+              {role}
+            </h3>
+            {/* Company name */}
+            <p className="mb-1 select-none font-poppins text-base text-gray-200">
               {companyName}
             </p>
-            <p className="mb-2 font-poppins text-sm text-gray-400">
+            {/* Location and dates */}
+            <p className="select-none font-poppins text-sm text-gray-400">
               {location} • {startDate} - {endDate}
             </p>
           </div>
+
+          {/* Expand/Collapse Icon */}
+          <div className="flex items-center">
+            <svg
+              className={`h-5 w-5 text-gray-400 transition-transform duration-300 ${
+                isExpanded ? "rotate-180" : ""
+              }`}
+              fill="none"
+              strokeWidth="2"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
         </div>
 
-        {/* Bullet points - full width, aligned with left edge */}
-        <ul className="mt-2 space-y-1 font-poppins text-sm leading-relaxed text-gray-200 md:text-base">
-          {Array.isArray(description) ? (
-            description.map((item, index) => (
-              <li key={index} className="flex items-start">
-                <span className="mr-2 text-gray-300">•</span>
-                <span>{item}</span>
+        {/* Bullet points - collapsible */}
+        <div
+          className={`overflow-hidden transition-all duration-300 ease-in-out ${
+            isExpanded ? "max-h-[2000px] opacity-100" : "max-h-0 opacity-0"
+          }`}
+        >
+          <ul className="mt-2 space-y-1 font-poppins text-sm leading-relaxed text-gray-200 md:text-base">
+            {Array.isArray(description) ? (
+              description.map((item, index) => (
+                <li key={index} className="flex items-start">
+                  <span className="mr-2 select-none text-gray-300">•</span>
+                  <span>{item}</span>
+                </li>
+              ))
+            ) : (
+              <li className="flex items-start">
+                <span className="mr-2 text-gray-600">•</span>
+                <span>{description}</span>
               </li>
-            ))
-          ) : (
-            <li className="flex items-start">
-              <span className="mr-2 text-gray-600">•</span>
-              <span>{description}</span>
-            </li>
-          )}
-        </ul>
+            )}
+          </ul>
+        </div>
       </div>
     </div>
   );
