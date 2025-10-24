@@ -11,8 +11,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import avatarImage from "./assets/images/avatar.jpg";
 
 const name = "Jenul Ferdinand";
-const currentPosition =
-  "Bachelor of Computer Science (Advanced) at Monash University";
+const currentPosition = "Computer Science at Monash University";
 const aboutMe = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`;
 
 function App() {
