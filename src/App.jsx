@@ -2,6 +2,7 @@ import { useMemo } from "react";
 
 import WorkExperience from "./components/WorkExperience";
 import LoadingOverlay from "./components/LoadingOverlay";
+import Navigation from "./components/Navigation";
 
 import { useWorkExperience } from "./hooks/useWorkExperience";
 import { useVolunteering } from "./hooks/useVolunteering";
@@ -65,6 +66,7 @@ function App() {
   return (
     <BrowserRouter>
       <LoadingOverlay />
+      <Navigation />
 
       <Routes>
         <Route
@@ -75,7 +77,7 @@ function App() {
               <div className="relative w-full">
                 {/* Left column - Text content */}
                 <div className="sm:max-w-3xl sm:pr-0 md:max-w-7xl md:pr-52">
-                  <h1 className="mb-2 font-tiempos text-4xl text-white">
+                  <h1 id="main-heading" className="mb-2 font-tiempos text-4xl text-white">
                     {name}
                   </h1>
                   <h2 className="mb-8 font-tiempos text-xl text-gray-300">
@@ -114,7 +116,28 @@ function App() {
             </div>
           }
         />
-        <Route path="/testing" element={<div></div>} />
+        <Route
+          path="/projects"
+          element={
+            <div className="min-h-screen bg-neutral-950 px-8 py-12">
+              <h1 className="font-tiempos text-4xl text-white">Projects</h1>
+              <p className="mt-4 font-poppins text-gray-400">
+                Projects page coming soon...
+              </p>
+            </div>
+          }
+        />
+        <Route
+          path="/blog"
+          element={
+            <div className="min-h-screen bg-neutral-950 px-8 py-12">
+              <h1 className="font-tiempos text-4xl text-white">Blog</h1>
+              <p className="mt-4 font-poppins text-gray-400">
+                Blog page coming soon...
+              </p>
+            </div>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
